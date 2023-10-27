@@ -517,7 +517,7 @@ getConfigFileInfo() {
 }
 
 outputVmess() {
-	raw="{
+    raw="{
       \"v\": \"2\",
       \"ps\": \"\",
       \"add\": \"${IP}\",
