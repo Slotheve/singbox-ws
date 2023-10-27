@@ -207,21 +207,20 @@ setSelinux() {
 
 archAffix() {
     case "$(uname -m)" in
-        x86_64|amd64)
-            ARCH="amd64"
-			CPU="x86_64"
+      x86_64|amd64)
+        ARCH="amd64"
+	CPU="x86_64"
         ;;
-        armv8|aarch64)
-            ARCH="arm64"
-			CPU="aarch64"
+      armv8|aarch64)
+        ARCH="arm64"
+	CPU="aarch64"
         ;;
-        *)
-            colorEcho $RED " 不支持的CPU架构！"
-            exit 1
+      *)
+        colorEcho $RED " 不支持的CPU架构！"
+        exit 1
         ;;
     esac
-
-	return 0
+    return 0
 }
 
 installSingBox() {
@@ -498,7 +497,7 @@ restart() {
 }
 
 getConfigFileInfo() {
-	protocol="vmess"
+	protocol=`grep type $CONFIG_FILE | cut -d: -f2 | head -n 1 | tr -d \",' '`
 	network="ws"
 	port=`grep port $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
 	uuid=`grep id $CONFIG_FILE | head -n1| cut -d: -f2 | tr -d \",' '`
@@ -508,11 +507,12 @@ getConfigFileInfo() {
 	key=`grep key_path $CONFIG_FILE | tail -n1 | cut -d: -f2 | tr -d \",' '`
 	domain=`grep server_name $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
 	password=`grep password $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
-
-	if   [[ "$singbox" = "$protocol" ]]; then
-		protocol="vmess"
-	elif [[ "$VLESS" != "$protocol" ]]; then
-		protocol="$singbox"
+ 	if [[ "${protocol} = "vmess" ]]; then
+  		outputVmess
+	elif [[ "${protocol} = "vless" ]]; then
+		outputVless
+	elif [[ "${protocol} = "vless" ]]; then
+ 		outputTrojan
 	fi
 }
 
