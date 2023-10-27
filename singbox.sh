@@ -499,7 +499,7 @@ restart() {
 getConfigFileInfo() {
 	protocol=`grep type $CONFIG_FILE | cut -d: -f2 | head -n 1 | tr -d \",' '`
 	network="ws"
-	port=`grep port $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
+	port=`grep port $CONFIG_FILE | cut -d: -f2 | head -n 1 | tr -d \",' '`
 	uuid=`grep id $CONFIG_FILE | head -n1| cut -d: -f2 | tr -d \",' '`
 	alterid=`grep alterId $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
 	path=`grep path $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
