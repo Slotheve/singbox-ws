@@ -507,13 +507,6 @@ getConfigFileInfo() {
 	key=`grep key_path $CONFIG_FILE | tail -n1 | cut -d: -f2 | tr -d \",' '`
 	domain=`grep server_name $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
 	password=`grep password $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
- 	if [[ "${protocol}" = "vmess" ]]; then
-  		outputVmess
-	elif [[ "${protocol}" = "vless" ]]; then
-		outputVless
-	elif [[ "${protocol}" = "vless" ]]; then
- 		outputTrojan
-	fi
 }
 
 outputVmess() {
