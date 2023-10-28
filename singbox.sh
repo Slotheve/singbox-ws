@@ -275,6 +275,7 @@ vmessConfig() {
             "type": "vmess",
             "listen": "0.0.0.0",
             "listen_port": $PORT,
+            "domain_strategy": "prefer_ipv4",
             "users": [{
               "uuid": "$UUID",
               "alterId": 0
@@ -308,6 +309,7 @@ vlessConfig() {
             "type": "vless",
             "listen": "0.0.0.0",
             "listen_port": $PORT,
+            "domain_strategy": "prefer_ipv4",
             "users": [{
               "uuid": "$UUID",
               "flow": ""
@@ -349,10 +351,7 @@ trojanConfig() {
             "sniff": true,
             "proxy_protocol": false,
             "tls": {
-              "enabled": true,
-              "server_name": "$DOMAIN",
-              "certificate_path": "$CERT",
-              "key_path": "$KEY"
+              "enabled": false
             },
             "transport": {
               "type": "ws",
