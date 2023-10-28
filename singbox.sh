@@ -151,51 +151,35 @@ getData() {
         read -p " 请设置trojan密码（不输则随机生成）:" PASSWORD
         [[ -z "$PASSWORD" ]] && PASSWORD=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1`
         colorEcho $BLUE " 密码：$PASSWORD"
-		echo ""
-		read -p " 请设置trojan域名（不输则随机生成）:" DOMAIN
-		[[ -z "$DOMAIN" ]] && DOMAIN=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1`.xyz
-		colorEcho $BLUE " 域名：$DOMAIN"
-		echo ""
-		read -p " 请设置域名证书（不输默认生成）:" KEY
-		[[ -z "$KEY" ]] && mkdir -pv /usr/local/etc/sing-box && openssl genrsa \
-		-out /usr/local/etc/sing-box/sing-box.key 2048 && chmod \
-		+x /usr/local/etc/sing-box/sing-box.key && KEY="/usr/local/etc/sing-box/sing-box.key"
-		colorEcho $BLUE " 密钥路径：$KEY"
-		echo ""
-		read -p " 请设置域名证书（不输默认生成）:" CERT
-		[[ -z "$CERT" ]] && openssl req -new -x509 -days 3650 -key /usr/local/etc/sing-box/sing-box.key \
-		-out /usr/local/etc/sing-box/sing-box.crt -subj "/C=US/ST=LA/L=LAX/O=Xray/OU=Trojan/CN=&DOMAIN" \
-		&& chmod +x /usr/local/etc/sing-box/sing-box.crt && CERT="/usr/local/etc/sing-box/sing-box.crt"
-		colorEcho $BLUE " 证书路径：$CERT"
-		echo ""
-		read -p " 请设置ws路径（格式'/xx'）:" WS
-		if [[ -z "$WS" ]]; then
-			colorEcho $RED " 请输入路径"
-		fi
-		colorEcho $BLUE " 域名：$WS"
-	elif [[ "$VLESS" = "true" ]]; then
-		echo ""
-		read -p " 请设置vless的UUID（不输则随机生成）:" UUID
-		[[ -z "$UUID" ]] && UUID="$(cat '/proc/sys/kernel/random/uuid')"
-		colorEcho $BLUE " UUID：$UUID"
-		echo ""
-		read -p " 请设置ws路径（格式'/xx'）:" WS
-		if [[ -z "$WS" ]]; then
-			colorEcho $RED " 请输入路径"
-		fi
-		colorEcho $BLUE " 域名：$WS"
-	elif [[ "$VMESS" = "true" ]]; then
-		echo ""
-		read -p " 请设置vmess的UUID（不输则随机生成）:" UUID
-		[[ -z "$UUID" ]] && UUID="$(cat '/proc/sys/kernel/random/uuid')"
-		colorEcho $BLUE " UUID：$UUID"
-		echo ""
-		read -p " 请设置ws路径（格式'/xx'）:" WS
-		if [[ -z "$WS" ]]; then
-			colorEcho $RED " 请输入路径"
-		fi
-		colorEcho $BLUE " 域名：$WS"
+	echo ""
+	read -p " 请设置ws路径（格式'/xx'）:" WS
+        if [[ -z "$WS" ]]; then
+                colorEcho $RED " 请输入路径"
+        fi
+        colorEcho $BLUE " 路径：$WS"
+    elif [[ "$VLESS" = "true" ]]; then
+        echo ""
+	read -p " 请设置vless的UUID（不输则随机生成）:" UUID
+	[[ -z "$UUID" ]] && UUID="$(cat '/proc/sys/kernel/random/uuid')"
+	colorEcho $BLUE " UUID：$UUID"
+	echo ""
+	read -p " 请设置ws路径（格式'/xx'）:" WS
+	if [[ -z "$WS" ]]; then
+		colorEcho $RED " 请输入路径"
 	fi
+	colorEcho $BLUE " 路径：$WS"
+    elif [[ "$VMESS" = "true" ]]; then
+	echo ""
+	read -p " 请设置vmess的UUID（不输则随机生成）:" UUID
+	[[ -z "$UUID" ]] && UUID="$(cat '/proc/sys/kernel/random/uuid')"
+	colorEcho $BLUE " UUID：$UUID"
+	echo ""
+	read -p " 请设置ws路径（格式'/xx'）:" WS
+	if [[ -z "$WS" ]]; then
+			colorEcho $RED " 请输入路径"
+	fi
+	colorEcho $BLUE " 路径：$WS"
+    fi
 }
 
 setSelinux() {
