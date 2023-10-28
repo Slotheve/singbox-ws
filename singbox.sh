@@ -535,7 +535,7 @@ outputVless() {
 }
 
 outputTrojan() {
-	raw="${password}@${IP}:${port}?type=ws&path=${path}&security=none&headerType=none"
+	raw="${password}@${IP}:${port}?encryption=none&security=none&type=ws&path=${path}"
 
 	link="trojan://${raw}"
 
@@ -545,7 +545,6 @@ outputTrojan() {
 	echo -e "   ${BLUE}密码(password)：${PLAIN} ${RED}${password}${PLAIN}"
 	echo -e "   ${BLUE}传输协议(network)：${PLAIN} ${RED}ws${PLAIN}"
 	echo -e "   ${BLUE}路径(ws)：${PLAIN} ${RED}${path}${PLAIN}"
-	echo -e "   ${BLUE}加密协议(security)：${PLAIN} ${RED}tls${PLAIN}"
 	echo ""
 	echo -e "   ${BLUE}trojan链接:${PLAIN} $RED$link$PLAIN"
 }
