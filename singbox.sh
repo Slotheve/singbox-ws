@@ -551,7 +551,7 @@ outputVless() {
 }
 
 outputTrojan() {
-	raw="${password}@${IP}:${port}?type=ws&path=${path}&security=tls&sni=${domain}&headerType=none"
+	raw="${password}@${IP}:${port}?type=ws&path=${path}&security=none&headerType=none"
 
 	link="trojan://${raw}"
 
@@ -562,12 +562,8 @@ outputTrojan() {
 	echo -e "   ${BLUE}传输协议(network)：${PLAIN} ${RED}ws${PLAIN}"
 	echo -e "   ${BLUE}路径(ws)：${PLAIN} ${RED}${path}${PLAIN}"
 	echo -e "   ${BLUE}加密协议(security)：${PLAIN} ${RED}tls${PLAIN}"
-	echo -e "   ${BLUE}域名(domain)：${PLAIN} ${RED}${domain}${PLAIN}"
-	echo -e "   ${BLUE}证书路径(cert)：${PLAIN} ${RED}${cert}${PLAIN}"
-	echo -e "   ${BLUE}密钥路径(key)：${PLAIN} ${RED}${key}${PLAIN}"
 	echo ""
 	echo -e "   ${BLUE}trojan链接:${PLAIN} $RED$link$PLAIN"
-	echo -e "   ${BLUE}非自定义证书路径请务必开启:${PLAIN} ${YELLOW}skip-cert-verify:${PLAIN} ${RED}true${PLAIN} ${YELLOW}(允许不安全连接)${PLAIN}"
 }
 
 showInfo() {
