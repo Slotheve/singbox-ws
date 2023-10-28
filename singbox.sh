@@ -281,9 +281,7 @@ vmessConfig() {
             }],
             "transport": {
               "type": "ws",
-              "path": "$WS",
-              "max_early_data": 0,
-	          "early_data_header_name": "Sec-WebSocket-Protocol"
+              "path": "$WS"
 	        },
             "tcp_fast_open": true,
             "udp_fragment": true,
@@ -316,9 +314,7 @@ vlessConfig() {
             }],
             "transport": {
               "type": "ws",
-              "path": "$WS",
-              "max_early_data": 0,
-              "early_data_header_name": "Sec-WebSocket-Protocol"
+              "path": "$WS"
             },
             "tcp_fast_open": true,
             "udp_fragment": true,
@@ -360,9 +356,7 @@ trojanConfig() {
             },
             "transport": {
               "type": "ws",
-              "path": "$WS",
-              "max_early_data": 0,
-              "early_data_header_name": "Sec-WebSocket-Protocol"
+              "path": "$WS"
             }
         }
     ],
