@@ -267,7 +267,7 @@ vmessConfig() {
             "transport": {
               "type": "ws",
               "path": "$WS"
-	        },
+            },
             "tcp_fast_open": true,
             "udp_fragment": true,
             "sniff": true,
@@ -281,7 +281,6 @@ vmessConfig() {
         }
     ]
 }
-
 EOF
 }
 
@@ -313,7 +312,7 @@ vlessConfig() {
         {
             "type": "direct"
         }
-     ]
+    ]
 }
 EOF
 }
@@ -347,7 +346,7 @@ trojanConfig() {
         {
           "type": "direct"
         }
-     ]
+    ]
 }
 EOF
 }
