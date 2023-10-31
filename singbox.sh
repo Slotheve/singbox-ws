@@ -269,10 +269,7 @@ vmessConfig() {
               "path": "$WS"
             },
             "tcp_fast_open": true,
-            "udp_fragment": true,
-            "sniff": true,
-            "sniff_override_destination": true,
-            "proxy_protocol": false
+            "udp_fragment": true
         }
     ],
     "outbounds": [
@@ -302,10 +299,7 @@ vlessConfig() {
               "path": "$WS"
             },
             "tcp_fast_open": true,
-            "udp_fragment": true,
-            "sniff": true,
-            "sniff_override_destination": true,
-            "proxy_protocol": false
+            "udp_fragment": true
         }
     ],
     "outbounds": [
@@ -329,17 +323,15 @@ trojanConfig() {
             "users": [{
               "password": "$PASSWORD"
             }],
-            "tcp_fast_open": true,
-            "udp_fragment": true,
-            "sniff": true,
-            "proxy_protocol": false,
             "tls": {
               "enabled": false
             },
             "transport": {
               "type": "ws",
               "path": "$WS"
-            }
+            },
+            "tcp_fast_open": true,
+            "udp_fragment": true
         }
     ],
     "outbounds": [
